@@ -26,13 +26,27 @@ func main() {
 	
 	// get the input
 	var input string
-	
-	if len(os.Args) >= 2 {
-		input = os.Args[1]
-	} else {
-		fmt.Println("Please enter a string to encode")
-		return
+
+	// parameters --encode  --decode --help or -h -e -d
+	// handle the parameters
+	if(len(os.Args) >= 2){
+		if(len(os.Args) > 2){
+			switch os.Args[1] {
+				case "--encode", "-e":
+					input = os.Args[2]
+				case "--decode", "-d":
+					input = os.Args[2]
+				case "--help", "-h":
+					fmt.Println("Usage: base64 [OPTION]... [FILE]")
+			}
+		}else{
+			input = os.Args[1]
+		}
+	}else{
+		fmt.Println("Usage: base64 [OPTION]... [FILE]")
 	}
+
+
 	// get the bytes of the string
 	bytes := []byte(input)
 	

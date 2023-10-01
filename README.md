@@ -9,4 +9,4 @@ This is a simple Golang project that allows you to encode text to Base64 and dec
 To encode text to Base64, run the `main.go` program and provide the text you want to encode as a command-line argument. For example:
 
 ```bash
-go run main.go "Hello, World!"
+go run main.go -e "Hello, World!"
