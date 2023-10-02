@@ -66,15 +66,20 @@ func main() {
 	if (len(os.Args) >= 2){
 		switch os.Args[1] {
 			case "--encode", "-e":
-				fmt.Println(logic.encodeToBase64(binaries))
+				fmt.Println(logic.EncodeToBase64(binaries))
 			case "--decode", "-d":
 				// fmt.Println(logic.convertToBinary(binaries))
 			default:
-				fmt.Println(logic.encodeToBase64(binaries))
+				fmt.Println(logic.EncodeToBase64(binaries))
 		}
 	}else{
-		fmt.Println(logic.encodeToBase64(binaries))
+		fmt.Println(logic.EncodeToBase64(binaries))
 	}
 
+	// create a file
 
+	filename := logic.CreateTextFileFromBase64(logic.EncodeToBase64(binaries))
+
+	fmt.Println("Done!")
+	fmt.Println("File created: " + filename)
 }

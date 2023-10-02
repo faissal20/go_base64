@@ -1,7 +1,11 @@
 package logic
 
+import (
+	"fmt"
+	"os"
+)
 
-func  encodeToBase64(binaries []byte) (string)  {
+func EncodeToBase64(binaries []byte) (string)  {
 	i := 0
 	str := ""
 	for  i < len(binaries) {
@@ -49,4 +53,24 @@ func  encodeToBase64(binaries []byte) (string)  {
 	}
 
 	return str
+}
+
+func CreateTextFileFromBase64(base64 string) (string) {
+	
+	fileName := "base64.txt"
+
+	os.Create(fileName)
+
+	file, err := os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY, 0644)
+
+	if err != nil {
+		panic(err)
+	}
+	// write the base64 to the file
+	file.WriteString(base64)
+
+	defer file.Close()
+	
+	return fileName
+
 }
