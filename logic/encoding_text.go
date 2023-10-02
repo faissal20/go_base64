@@ -1,10 +1,10 @@
-package encoding
+package logic
 
 import (
 	
 )
 
-func convertToBinary(binaries []byte) (string) {
+func  convertToBase64(binaries []byte) (string)  {
 	i := 0
 	str := ""
 	for  i < len(binaries) {

@@ -1,10 +1,9 @@
 package main
 
-import 
-(
+import (
+	"github.com/faissal20/go_base64/logic"
 	"fmt"
 	"os"
-	"github.com/faissal20/go_base64/encoding/enconding_text"
 )
 
 func convertToBinary(integer byte) ([8]byte) {
@@ -67,14 +66,14 @@ func main() {
 	if (len(os.Args) >= 2){
 		switch os.Args[1] {
 			case "--encode", "-e":
-				fmt.Println(enconding_text.ConvertToBase64(binaries))
+				fmt.Println(logic.convertToBase64(binaries))
 			case "--decode", "-d":
-				fmt.Println(enconding_text.ConvertFromBase64(binaries))
+				// fmt.Println(logic.convertToBinary(binaries))
 			default:
-				fmt.Println(enconding_text.ConvertToBase64(binaries))
+				fmt.Println(logic.convertToBase64(binaries))
 		}
 	}else{
-		fmt.Println(enconding_text.ConvertToBase64(binaries))
+		fmt.Println(logic.convertToBase64(binaries))
 	}
 
 
