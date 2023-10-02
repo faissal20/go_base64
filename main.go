@@ -66,14 +66,14 @@ func main() {
 	if (len(os.Args) >= 2){
 		switch os.Args[1] {
 			case "--encode", "-e":
-				fmt.Println(logic.convertToBase64(binaries))
+				fmt.Println(logic.encodeToBase64(binaries))
 			case "--decode", "-d":
 				// fmt.Println(logic.convertToBinary(binaries))
 			default:
-				fmt.Println(logic.convertToBase64(binaries))
+				fmt.Println(logic.encodeToBase64(binaries))
 		}
 	}else{
-		fmt.Println(logic.convertToBase64(binaries))
+		fmt.Println(logic.encodeToBase64(binaries))
 	}
 
 

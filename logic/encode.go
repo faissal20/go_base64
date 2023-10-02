@@ -1,10 +1,7 @@
 package logic
 
-import (
-	
-)
 
-func  convertToBase64(binaries []byte) (string)  {
+func  encodeToBase64(binaries []byte) (string)  {
 	i := 0
 	str := ""
 	for  i < len(binaries) {
