@@ -4,7 +4,7 @@ import
 (
 	"fmt"
 	"os"
-	"github.com/faissal20/base64_encoding/encoding/enconding_text"
+	"github.com/faissal20/go_base64/encoding/enconding_text"
 )
 
 func convertToBinary(integer byte) ([8]byte) {

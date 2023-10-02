@@ -1,4 +1,4 @@
-module github.com/faissal20/base64_encoding
+module github.com/faissal20/go_base64
 
 
 go 1.21.1
