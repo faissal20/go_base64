@@ -73,3 +73,29 @@ func CreateTextFileFromBase64(base64 string) (string) {
 	return fileName
 
 }
+
+func ReadFile(fileName string) (string) {
+	// file, err := os.Open(fileName)
+	file, err := os.ReadFile(fileName)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(file)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	
+	// defer file.Close()
+	
+	// // get the file size
+	// fileInfo, _ := file.Stat()
+
+	// var size int64 = fileInfo.Size()
+	// // read the file
+	// buffer := make([]byte, size)
+
+	// file.Read(buffer)
+
+	// return string(buffer)
+}

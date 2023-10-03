@@ -32,11 +32,13 @@ func main() {
 	if(len(os.Args) >= 2){
 		if(len(os.Args) > 2){
 			switch os.Args[1] {
-				case "--encode", "-e":
+				case  "-e":
 					input = os.Args[2]
-				case "--decode", "-d":
+				case  "-d":
 					input = os.Args[2]
-				case "--help", "-h":
+				case "-f":
+					input = logic.ReadFile(os.Args[2])
+				case  "-h":
 					fmt.Println("Usage: base64 [OPTION]... [FILE]")
 			}
 		}else{
@@ -46,7 +48,7 @@ func main() {
 		fmt.Println("Usage: base64 [OPTION]... [FILE]")
 	}
 
-
+	
 	// get the bytes of the string
 	bytes := []byte(input)
 	
