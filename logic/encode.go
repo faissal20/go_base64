@@ -82,20 +82,4 @@ func ReadFile(fileName string) (string) {
 	}
 
 	return string(file)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	
-	// defer file.Close()
-	
-	// // get the file size
-	// fileInfo, _ := file.Stat()
-
-	// var size int64 = fileInfo.Size()
-	// // read the file
-	// buffer := make([]byte, size)
-
-	// file.Read(buffer)
-
-	// return string(buffer)
 }
