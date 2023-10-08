@@ -52,30 +52,46 @@ func main() {
 	// get the bytes of the string
 	bytes := []byte(input)
 	
-	binaries := []byte{}
-
-
-	for i := 0; i < len(bytes); i++ {
-		
-		binary := convertToBinary(bytes[i])
-		// append the binary to the array
-		for j := 0; j < 8; j++ {
-			binaries = append(binaries, binary[j])
-		}
-
-	}
+	
 
 	if (len(os.Args) >= 2){
 		switch os.Args[1] {
 			case "--encode", "-e":
+				binaries := []byte{}
+
+
+				for i := 0; i < len(bytes); i++ {
+					
+					binary := convertToBinary(bytes[i])
+					// append the binary to the array
+					for j := 0; j < 8; j++ {
+						binaries = append(binaries, binary[j])
+					}
+
+				}
+
 				fmt.Println(logic.EncodeToBase64(binaries))
+
 			case "--decode", "-d":
-				// fmt.Println(logic.convertToBinary(binaries))
+				stringPrepared := logic.PrepareString(input)
+				binaries := []byte{}
+
+				for i := 0; i < len(stringPrepared); i++ {
+					binary := convertToBinary(stringPrepared[i])
+					// append the binary to the array
+					for j := 0; j < 6; j++ {
+						binaries = append(binaries, binary[j])
+					}
+					
+					binaries = append(binaries, stringPrepared[i])
+				}
+
+				fmt.Println(logic.DecodeFromBase64(binaries))
 			default:
-				fmt.Println(logic.EncodeToBase64(binaries))
+				// fmt.Println(logic.EncodeToBase64(binaries))
 		}
 	}else{
-		fmt.Println(logic.EncodeToBase64(binaries))
+		// fmt.Println(logic.EncodeToBase64(binaries))
 	}
 
 	// create a file
