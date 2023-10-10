@@ -104,8 +104,8 @@ func main() {
 					}
 
 				}
-				
-				fmt.Println(logic.DecodeFromBase64(binaries))
+
+				fmt.Println(logic.DecodeFromBase64(binaries)) 
 
 			default:
 				fmt.Println("still not implemented")
