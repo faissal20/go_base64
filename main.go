@@ -19,6 +19,19 @@ func convertToBinary(integer byte) ([8]byte) {
 	return result
 
 }
+
+func convertToBinaryBase64(integer byte) ([6]byte){
+	result := [6]byte{}
+	
+	counter := 5
+	for integer > 0 {
+		result[counter] = integer % 2
+		integer = integer / 2
+		counter--
+	}
+	
+	return result
+}
 	
 
 
@@ -71,33 +84,35 @@ func main() {
 				}
 
 				fmt.Println(logic.EncodeToBase64(binaries))
+				filename := logic.CreateTextFileFromBase64(logic.EncodeToBase64(binaries))
+
+				fmt.Println("Done!")
+				fmt.Println("File created: " + filename)
 
 			case "--decode", "-d":
+
 				stringPrepared := logic.PrepareString(input)
+			
 				binaries := []byte{}
 
 				for i := 0; i < len(stringPrepared); i++ {
-					binary := convertToBinary(stringPrepared[i])
+
+					binary := convertToBinaryBase64(stringPrepared[i])
 					// append the binary to the array
 					for j := 0; j < 6; j++ {
 						binaries = append(binaries, binary[j])
 					}
-					
-					binaries = append(binaries, stringPrepared[i])
-				}
 
+				}
+				
 				fmt.Println(logic.DecodeFromBase64(binaries))
+
 			default:
-				// fmt.Println(logic.EncodeToBase64(binaries))
+				fmt.Println("still not implemented")
 		}
 	}else{
-		// fmt.Println(logic.EncodeToBase64(binaries))
+		fmt.Println("Usage: base64 [OPTION]... [FILE]")
 	}
 
-	// create a file
-
-	filename := logic.CreateTextFileFromBase64(logic.EncodeToBase64(binaries))
-
-	fmt.Println("Done!")
-	fmt.Println("File created: " + filename)
+	
 }

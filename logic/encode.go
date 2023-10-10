@@ -7,6 +7,7 @@ import (
 func EncodeToBase64(binaries []byte) (string)  {
 	i := 0
 	str := ""
+	temp := ""
 	for  i < len(binaries) {
 		padded := false
 		if (i + 5) > len(binaries) {
@@ -29,7 +30,10 @@ func EncodeToBase64(binaries []byte) (string)  {
 			}
 			y++
 		}
+		
 		// convert the decimal to ASCII  base64
+		temp = temp + string(decimal)
+
 		if decimal < 26 {
 			str = str + string(decimal + 65)
 		} else if decimal < 52 {
@@ -50,7 +54,7 @@ func EncodeToBase64(binaries []byte) (string)  {
 
 		i = i + 6
 	}
-
+	
 	return str
 }
 
