@@ -5,33 +5,6 @@ import (
 	"fmt"
 	"os"
 )
-
-func ConvertToBinary(integer byte) ([8]byte) {
-	result := [8]byte{}
-	
-	counter := 7
-	for integer > 0 {
-		result[counter] = integer % 2
-		integer = integer / 2
-		counter--
-	}
-	
-	return result
-
-}
-
-func ConvertToBinaryBase64(integer byte) ([6]byte){
-	result := [6]byte{}
-	
-	counter := 5
-	for integer > 0 {
-		result[counter] = integer % 2
-		integer = integer / 2
-		counter--
-	}
-	
-	return result
-}
 	
 
 func main() {
@@ -58,11 +31,8 @@ func main() {
 		fmt.Println("Usage: base64 [OPTION]... [FILE|STRING]");
 	}
 
-	
-	// get the bytes of the string
+
 	bytes := []byte(input)
-	
-	
 
 	if (len(os.Args) >= 2){
 		switch os.Args[1] {
@@ -85,7 +55,6 @@ func main() {
 
 				fmt.Println("Done!")
 				fmt.Println("File created: " + filename)
-
 			case "--decode", "-d":
 
 				stringPrepared := logic.PrepareString(input)
@@ -103,6 +72,9 @@ func main() {
 				}
 
 				fmt.Println(logic.DecodeFromBase64(binaries)) 
+				filename := logic.CreateTextFileFromBase64(logic.EncodeToBase64(binaries))
+				fmt.Println("Done!")
+				fmt.Println("File created: " + filename) // TODO convert to the original file name extension
 
 			default:
 				fmt.Println("still not implemented")
