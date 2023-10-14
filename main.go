@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func convertToBinary(integer byte) ([8]byte) {
+func ConvertToBinary(integer byte) ([8]byte) {
 	result := [8]byte{}
 	
 	counter := 7
@@ -20,7 +20,7 @@ func convertToBinary(integer byte) ([8]byte) {
 
 }
 
-func convertToBinaryBase64(integer byte) ([6]byte){
+func ConvertToBinaryBase64(integer byte) ([6]byte){
 	result := [6]byte{}
 	
 	counter := 5
@@ -34,14 +34,11 @@ func convertToBinaryBase64(integer byte) ([6]byte){
 }
 	
 
-
 func main() {
 	
 	// get the input
 	var input string
 
-	// parameters --encode  --decode --help or -h -e -d
-	// handle the parameters
 	if(len(os.Args) >= 2){
 		if(len(os.Args) > 2){
 			switch os.Args[1] {
@@ -58,7 +55,7 @@ func main() {
 			input = os.Args[1]
 		}
 	}else{
-		fmt.Println("Usage: base64 [OPTION]... [FILE]")
+		fmt.Println("Usage: base64 [OPTION]... [FILE|STRING]");
 	}
 
 	
@@ -75,7 +72,7 @@ func main() {
 
 				for i := 0; i < len(bytes); i++ {
 					
-					binary := convertToBinary(bytes[i])
+					binary := logic.ConvertToBinary(bytes[i])
 					// append the binary to the array
 					for j := 0; j < 8; j++ {
 						binaries = append(binaries, binary[j])
@@ -97,7 +94,7 @@ func main() {
 
 				for i := 0; i < len(stringPrepared); i++ {
 
-					binary := convertToBinaryBase64(stringPrepared[i])
+					binary := logic.ConvertToBinaryBase64(stringPrepared[i])
 					// append the binary to the array
 					for j := 0; j < 6; j++ {
 						binaries = append(binaries, binary[j])

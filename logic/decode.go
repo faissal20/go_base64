@@ -1,6 +1,20 @@
 package logic
 
 
+func ConvertToBinaryBase64(integer byte) ([6]byte){
+	result := [6]byte{}
+	
+	counter := 5
+	for integer > 0 {
+		result[counter] = integer % 2
+		integer = integer / 2
+		counter--
+	}
+	
+	return result
+}
+	
+
 func PrepareString(str string) string {
 
 	result := ""

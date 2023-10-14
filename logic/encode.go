@@ -78,6 +78,20 @@ func CreateTextFileFromBase64(base64 string) (string) {
 
 }
 
+func ConvertToBinary(integer byte) ([8]byte) {
+	result := [8]byte{}
+	
+	counter := 7
+	for integer > 0 {
+		result[counter] = integer % 2
+		integer = integer / 2
+		counter--
+	}
+	
+	return result
+
+}
+
 func ReadFile(fileName string) (string) {
 	// file, err := os.Open(fileName)
 	file, err := os.ReadFile(fileName)
